@@ -1,5 +1,5 @@
 import ProjectClient from "./project-client";
-import { projects } from "@/libs/projects";
+import { projects } from "@/data/projects";
 
 export default async function ProjectPage({ params }) {
   const { slug } = await params;
