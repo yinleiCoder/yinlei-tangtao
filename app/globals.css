@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+body {
+    background-color: #e3e3db;
+    color: #1a1a1a;
+    font-family: "PP Neue Montreal", sans-serif;
+}
