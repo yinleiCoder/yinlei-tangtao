@@ -20,7 +20,7 @@ export default function MyBreadcrumb() {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/projects">Our Love Story</BreadcrumbLink>
+          <BreadcrumbLink href="/projects">Our Story</BreadcrumbLink>
         </BreadcrumbItem>
         {pathname.split("/").length > 2 && (
           <>

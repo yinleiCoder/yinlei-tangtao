@@ -9,7 +9,7 @@ export const projects = [
             "/project-1-2.jpg",
             "/project-1-3.jpg",
             "/project-1-4.jpg",
-            "/project-1-5.jpg",
+            "/project-1-5.png",
             "/project-1-6.jpg",
         ]
     },
@@ -26,6 +26,11 @@ export const projects = [
             "/project-2-5.jpg",
             "/project-2-6.jpg",
             "/project-2-7.jpg",
+            "/project-2-8.jpg",
+            "/project-2-9.jpg",
+            "/project-2-10.jpg",
+            "/project-2-11.jpg",
+            "/project-2-12.jpg",
         ]
     },
     
