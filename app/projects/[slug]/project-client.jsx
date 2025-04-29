@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ReactLenis, useLenis } from "lenis/react";
+import { ReactLenis } from "lenis/react";
 import {
   ArrowLongRightIcon,
   ArrowLongLeftIcon,
@@ -115,9 +115,6 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
           }
         },
       });
-      return () => {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-      }
     },
 
     {
@@ -181,7 +178,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
             {nextProject.title}
           </h1>
           <div className="project-footer-copy absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-            <p>Next Project</p>
+            <p>Next Story</p>
           </div>
           <div className="next-project-progress absolute bottom-[25%] w-1/2 h-[4px] bg-[#c6c6be]">
             <div

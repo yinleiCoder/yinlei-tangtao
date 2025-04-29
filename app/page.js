@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
+import DiamondRing from "./components/DiamondRing";
+import DirectionAwareMagnetically from "./components/DirectionAwareMagnetically";
 
 export default function Home() {
   return (
-    <div className="home w-full h-svh flex justify-center items-center">
-      <div className="link flex items-center gap-1 px-2 group cursor-pointer">
-        <ArrowLongRightIcon className="size-4 inline-block group-hover:size-5" />
+    <div className="home w-full bg-[#1a1a1a] flex flex-col items-center">
+      <DirectionAwareMagnetically />
+      <div className="w-full h-svh link flex justify-center items-center gap-1 px-2 group cursor-pointer">
         <Link href="/projects" className="group-hover:text-lg transition">
-          Our Story
+          <DiamondRing />
         </Link>
       </div>
     </div>
