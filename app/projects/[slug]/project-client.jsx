@@ -126,10 +126,10 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
     <ReactLenis root>
       <div className="project-page">
         <div
-          className="project-nav w-full md:w-1/2 flex justify-between items-center gap-2 p-1 fixed top-0 left-1/2 -translate-x-1/2 z-50"
+          className="project-nav w-full md:w-1/2 flex justify-between items-center gap-2 p-1 fixed top-2 left-1/2 -translate-x-1/2 z-50"
           ref={projectNavRef}
         >
-          <div className="link cursor-pointer hidden md:flex items-center gap-1 px-3 py-1 rounded-full bg-[#c6c6be]">
+          <div className="link cursor-pointer hidden md:flex items-center gap-1 px-3 py-1 rounded-full text-black bg-[#c6c6be]">
             <ArrowLongLeftIcon className="size-4 inline-block" />
             <Link href={`/projects/${prevProject.slug}`}>Previous</Link>
           </div>
@@ -140,7 +140,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
               ref={progressBarRef}
             ></div>
           </div>
-          <div className="link cursor-pointer hidden md:flex items-center gap-1 px-3 py-1 rounded-full bg-[#c6c6be]">
+          <div className="link cursor-pointer hidden md:flex items-center gap-1 px-3 py-1 rounded-full text-black bg-[#c6c6be]">
             <Link href={`/projects/${nextProject.slug}`}>Next</Link>
             <ArrowLongRightIcon className="size-4 inline-block" />
           </div>
@@ -165,7 +165,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
                 <img
                   src={image}
                   alt=""
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-120 transition duration-[1s,2s] ease-in-out origin-top"
                 />
               </div>
             ))}

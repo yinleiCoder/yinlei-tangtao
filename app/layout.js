@@ -25,8 +25,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <nav className="fixed top-0 w-full p-4 flex justify-between items-center z-50 mix-blend-difference">
-          <a href="#">狗子与我</a>
+        <nav className="fixed top-0 w-full px-4 py-2 flex justify-between items-center z-50 mix-blend-difference">
+          <Link href="/" className="font-bold">狗子与我</Link>
           <Avatar>
             <AvatarImage src="/avatar.jpg" />
             <AvatarFallback>Y</AvatarFallback>
