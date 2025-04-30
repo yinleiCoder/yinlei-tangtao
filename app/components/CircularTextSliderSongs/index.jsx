@@ -31,7 +31,8 @@ export default function CircularTextSliderSongs() {
         const p = document.createElement("p");
         const count = document.createElement("span");
         p.textContent = words[i].name;
-        count.textContent = `(${Math.floor(Math.random() * 50) + 1})`;
+        // count.textContent = `(${Math.floor(Math.random() * 50) + 1})`;
+        count.textContent = `(${words[i].id})`;
         wordItem.appendChild(p);
         p.appendChild(count);
         gallery.appendChild(wordItem);
