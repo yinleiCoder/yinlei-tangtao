@@ -4,8 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-  background-color: #e3e3db;
-  color: #1a1a1a;
+  background-color: #1a1a1a;
+  color: #fff;
   font-family: "PP Neue Montreal", sans-serif;
 }
 

@@ -9,10 +9,10 @@ export default function Projects() {
         {projects.map((project) => (
           <li key={project.id}>
             <div className="link flex items-center gap-1 px-2 group cursor-pointer">
-              <ArrowLongRightIcon className="size-4 inline-block group-hover:size-5" />
+              <ArrowLongRightIcon className="size-4 inline-block group-hover:size-5 group-hover:text-red-500 transition" />
               <Link
                 href={`/projects/${project.slug}`}
-                className="group-hover:font-bold transition"
+                className="group-hover:font-bold group-hover:text-red-500 transition"
               >
                 {project.title}
               </Link>

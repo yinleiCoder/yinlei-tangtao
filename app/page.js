@@ -1,16 +1,18 @@
-import Link from "next/link";
+import { ReactLenis } from "lenis/react";
 import DiamondRing from "./components/DiamondRing";
 import DirectionAwareMagnetically from "./components/DirectionAwareMagnetically";
+import CircularTextSliderSongs from "./components/CircularTextSliderSongs";
 
 export default function Home() {
   return (
-    <div className="home w-full bg-[#1a1a1a] flex flex-col items-center">
-      <DirectionAwareMagnetically />
-      <div className="w-full h-svh flex justify-center items-center gap-1 px-2 group cursor-pointer">
-        <Link href="/projects" className="group-hover:text-lg transition">
-          <DiamondRing />
-        </Link>
-      </div>
-    </div>
+    <ReactLenis root>
+      <main className="w-full h-[3000vh] relative">
+        <CircularTextSliderSongs />
+        <DiamondRing />
+      </main>
+    </ReactLenis>
+
+    //   <DirectionAwareMagnetically />
+    //
   );
 }

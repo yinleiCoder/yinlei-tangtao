@@ -1,0 +1,31 @@
+.wordItem {
+    width: 800px;
+    height: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.wordItem p {
+    width: 100%;
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.wordItem p span {
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+.wordItemOfImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
