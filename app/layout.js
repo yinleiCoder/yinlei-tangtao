@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
         <nav className="fixed top-0 w-full px-4 py-2 flex justify-between items-center z-50 mix-blend-difference">
           <Link href="/" className="font-bold">狗子与我</Link>
           <Avatar>
-            <AvatarImage src="/avatar.jpg" />
+            <AvatarImage src="/avatar.jpg" className="hover:scale-110 transition"/>
             <AvatarFallback>Y</AvatarFallback>
           </Avatar>
         </nav>
@@ -37,6 +37,7 @@ export default function RootLayout({ children }) {
           <div className="flex items-center gap-10">
             <Link href="/">Home</Link>
             <Link href="/projects">Stories</Link>
+            <Link href="/contact">Contact</Link>
           </div>
           <p>© 2025 尹磊 版权所有</p>
         </footer>

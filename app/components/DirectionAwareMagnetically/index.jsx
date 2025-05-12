@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 
-export default function DirectionAwareMagnetically() {
+export default function DirectionAwareMagnetically({ data }) {
   const containerRef = useRef(null);
   const highlightRef = useRef(null);
 
@@ -70,6 +71,19 @@ export default function DirectionAwareMagnetically() {
     >
       <div className="relative mx-auto w-[90%] max-h-max md:max-h-none md:h-[60%] flex flex-col border border-solid border-[rgba(255,255,255,0.2)]">
         <div className="flex-1 flex flex-col md:flex-row justify-center items-center h-full border-b border-solid border-b-[rgba(255,255,255,0.2)]">
+          {data.map((project) => (
+            <div
+              key={project.id}
+              className="grid-item flex-1 w-full py-[60px] md:py-0 border-r-none flex justify-center items-center h-full border-b md:border-b-0 md:border-r border-solid md:border-r-[rgba(255,255,255,0.2)] border-b-[rgba(255,255,255,0.2)]"
+            >
+              <Link
+                href={`/projects/${project.slug}`}
+                className="group-hover:font-bold group-hover:text-red-500 transition"
+              >
+                <p className="relative z-10">{project.title}</p>
+              </Link>
+            </div>
+          ))}
           <div className="grid-item flex-1 w-full py-[60px] md:py-0 border-r-none flex justify-center items-center h-full border-b md:border-b-0 md:border-r border-solid md:border-r-[rgba(255,255,255,0.2)] border-b-[rgba(255,255,255,0.2)]">
             <p className="relative z-10">教师编制</p>
           </div>

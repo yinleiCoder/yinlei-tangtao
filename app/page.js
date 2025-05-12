@@ -1,6 +1,5 @@
 import { ReactLenis } from "lenis/react";
 import DiamondRing from "./components/DiamondRing";
-import DirectionAwareMagnetically from "./components/DirectionAwareMagnetically";
 import CircularTextSliderSongs from "./components/CircularTextSliderSongs";
 
 export default function Home() {
@@ -12,7 +11,5 @@ export default function Home() {
       </main>
     </ReactLenis>
 
-    //   <DirectionAwareMagnetically />
-    //
   );
 }
