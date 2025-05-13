@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,7 +9,7 @@ import "./index.css";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export default function CircularTextSliderSongs() {
+export default function CircularTextSlider() {
   const cursorRef = useRef(null);
   const galleryRef = useRef(null);
 
@@ -18,7 +18,7 @@ export default function CircularTextSliderSongs() {
   const radius = 1100;
 
   useGSAP(
-    () => {
+    (context, contextSafe) => {
       const cursor = cursorRef.current;
       const gallery = galleryRef.current;
 
@@ -47,10 +47,9 @@ export default function CircularTextSliderSongs() {
           rotation: rotation,
         });
 
-        wordItem.addEventListener("mouseover", function () {
-          const imgSrc = `/songs/word${i + 1}.jpg`;
+        const onMouseOver = contextSafe(() => {
           const img = document.createElement("img");
-          img.src = imgSrc;
+          img.src = `/songs/word${i + 1}.jpg`;
           img.className = "wordItemOfImg";
           img.style.clipPath =
             "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)";
@@ -63,7 +62,7 @@ export default function CircularTextSliderSongs() {
           });
         });
 
-        wordItem.addEventListener("mouseout", function () {
+        const onMouseOut = contextSafe(() => {
           const imgs = cursor.getElementsByTagName("img");
           if (imgs.length) {
             const lastImg = imgs[imgs.length - 1];
@@ -89,6 +88,10 @@ export default function CircularTextSliderSongs() {
             });
           }
         });
+
+        wordItem.addEventListener("mouseover", onMouseOver);
+
+        wordItem.addEventListener("mouseout", onMouseOut);
       }
 
       function updateWordPosition() {
@@ -115,7 +118,7 @@ export default function CircularTextSliderSongs() {
 
       function updateMouseHoverImagePosition(e) {
         gsap.to(cursor, {
-          x: e.clientX - 150,
+          x: e.clientX,
           y: e.clientY - 200,
           duration: 1,
           ease: "power3.out",
@@ -140,7 +143,7 @@ export default function CircularTextSliderSongs() {
     <>
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-[300px] h-[400px] z-0 pointer-events-none"
+        className="fixed top-0 left-0 w-[400px] aspect-square rounded-md overflow-hidden z-0 pointer-events-none"
       ></div>
       <div className="containers">
         <div

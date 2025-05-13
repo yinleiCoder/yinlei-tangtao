@@ -1,15 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 
-export default function DirectionAwareMagnetically({ data }) {
+export default function DirectionAwareMagnetically() {
   const containerRef = useRef(null);
   const highlightRef = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    const hightlight = highlightRef.current;
+    const highlight = highlightRef.current;
     const gridItems = container.querySelectorAll(".grid-item");
     const firstItem = container.querySelector(".grid-item");
 
@@ -33,12 +32,12 @@ export default function DirectionAwareMagnetically({ data }) {
         const rect = element.getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
 
-        hightlight.style.transform = `translate(${
+        highlight.style.transform = `translate(${
           rect.left - containerRect.left
         }px,${rect.top - containerRect.top}px)`;
-        hightlight.style.width = `${rect.width}px`;
-        hightlight.style.height = `${rect.height}px`;
-        hightlight.style.backgroundColor = element.dataset.color;
+        highlight.style.width = `${rect.width}px`;
+        highlight.style.height = `${rect.height}px`;
+        highlight.style.backgroundColor = element.dataset.color;
       }
     };
 
@@ -71,19 +70,6 @@ export default function DirectionAwareMagnetically({ data }) {
     >
       <div className="relative mx-auto w-[90%] max-h-max md:max-h-none md:h-[60%] flex flex-col border border-solid border-[rgba(255,255,255,0.2)]">
         <div className="flex-1 flex flex-col md:flex-row justify-center items-center h-full border-b border-solid border-b-[rgba(255,255,255,0.2)]">
-          {data.map((project) => (
-            <div
-              key={project.id}
-              className="grid-item flex-1 w-full py-[60px] md:py-0 border-r-none flex justify-center items-center h-full border-b md:border-b-0 md:border-r border-solid md:border-r-[rgba(255,255,255,0.2)] border-b-[rgba(255,255,255,0.2)]"
-            >
-              <Link
-                href={`/projects/${project.slug}`}
-                className="group-hover:font-bold group-hover:text-red-500 transition"
-              >
-                <p className="relative z-10">{project.title}</p>
-              </Link>
-            </div>
-          ))}
           <div className="grid-item flex-1 w-full py-[60px] md:py-0 border-r-none flex justify-center items-center h-full border-b md:border-b-0 md:border-r border-solid md:border-r-[rgba(255,255,255,0.2)] border-b-[rgba(255,255,255,0.2)]">
             <p className="relative z-10">教师编制</p>
           </div>

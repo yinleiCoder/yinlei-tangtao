@@ -45,7 +45,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
         ease: "power3.out",
       });
 
-      const navScrollTrigger = ScrollTrigger.create({
+      ScrollTrigger.create({
         trigger: document.body,
         start: "top top",
         end: "bottom bottom",
@@ -59,7 +59,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
         },
       });
 
-      const footerScrollTrigger = ScrollTrigger.create({
+      ScrollTrigger.create({
         trigger: footerRef.current,
         start: "top top",
         end: `+=${window.innerHeight * 3}px`,
@@ -124,28 +124,28 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
 
   return (
     <ReactLenis root>
-      <div className="project-page">
-        <div
+      <main className="project-page">
+        <section
           className="project-nav w-full md:w-1/2 flex justify-between items-center gap-2 p-1 fixed top-2 left-1/2 -translate-x-1/2 z-50"
           ref={projectNavRef}
         >
-          <div className="link cursor-pointer hidden md:flex items-center gap-1 px-3 py-1 rounded-full text-black bg-[#c6c6be]">
+          <div className="link cursor-pointer hidden md:flex items-center gap-1 px-2 py-1 rounded-md text-black bg-[#c6c6be]">
             <ArrowLongLeftIcon className="size-4 inline-block" />
             <Link href={`/projects/${prevProject.slug}`}>Previous</Link>
           </div>
-          <div className="project-page-scroll-progress relative flex-[2] h-[30px] flex justify-center items-center rounded-full border border-solid border-[#c6c6be] overflow-hidden bg-[rgba(255,255,255,0.25)] backdrop-blur-xl">
+          <div className="project-page-scroll-progress relative flex-[2] h-[30px] flex justify-center items-center rounded-md border border-solid border-[#c6c6be] overflow-hidden bg-[rgba(255,255,255,0.25)] backdrop-blur-xl">
             <p>{project.title}</p>
             <div
               className="project-page-scroll-progress-bar absolute top-0 left-0 w-full h-full bg-[#c6c6be] scale-x-0 origin-[center_left] will-change-transform -z-[1]"
               ref={progressBarRef}
             ></div>
           </div>
-          <div className="link cursor-pointer hidden md:flex items-center gap-1 px-3 py-1 rounded-full text-black bg-[#c6c6be]">
+          <div className="link cursor-pointer hidden md:flex items-center gap-1 px-2 py-1 rounded-md text-black bg-[#c6c6be]">
             <Link href={`/projects/${nextProject.slug}`}>Next</Link>
             <ArrowLongRightIcon className="size-4 inline-block" />
           </div>
-        </div>
-        <div className="project-hero relative w-full h-svh flex justify-center items-center">
+        </section>
+        <section className="project-hero relative w-full h-svh flex justify-center items-center">
           <h1 className="text-6xl md:text-9xl font-bold">{project.title}</h1>
           <p
             id="project-description"
@@ -154,8 +154,8 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
           >
             {project.description}
           </p>
-        </div>
-        <div className="project-images flex flex-col items-center gap-4">
+        </section>
+        <section className="project-images flex flex-col items-center gap-4">
           {project.images &&
             project.images.map((image, index) => (
               <div
@@ -169,8 +169,8 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
                 />
               </div>
             ))}
-        </div>
-        <div
+        </section>
+        <section
           className="project-footer relative w-full h-svh flex justify-center items-center"
           ref={footerRef}
         >
@@ -186,8 +186,8 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
               ref={nextProjectProgressBarRef}
             ></div>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </ReactLenis>
   );
 }

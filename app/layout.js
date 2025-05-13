@@ -16,16 +16,16 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "狗子与我",
-  description: "唐涛与尹磊的浪漫爱情之旅",
+  description: "唐涛、尹磊的浪漫爱情",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scrollbar-thumb-white scrollbar-thumb-rounded-full scrollbar-track-[transparent]">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased scrollbar-thin`}
       >
-        <nav className="fixed top-0 w-full px-4 py-2 flex justify-between items-center z-50 mix-blend-difference">
+        <nav className="w-full fixed top-0 px-4 py-2 flex justify-between items-center z-50 mix-blend-difference">
           <Link href="/" className="font-bold">狗子与我</Link>
           <Avatar>
             <AvatarImage src="/avatar.jpg" className="hover:scale-110 transition"/>
@@ -33,13 +33,15 @@ export default function RootLayout({ children }) {
           </Avatar>
         </nav>
         {children}
-        <footer className="fixed bottom-0 w-full p-4 flex justify-between items-center z-50 mix-blend-difference text-sm">
-          <div className="flex items-center gap-10">
+        <footer className="w-full fixed bottom-0 p-4 flex justify-between items-center z-50 mix-blend-difference text-sm">
+          <div className="flex flex-col md:flex-row items-center gap-8">
             <Link href="/">Home</Link>
             <Link href="/projects">Stories</Link>
+            <Link href="/photos">Photos</Link>
+            <Link href="/letter">Letter</Link>
             <Link href="/contact">Contact</Link>
           </div>
-          <p>© 2025 尹磊 版权所有</p>
+          <p className="hidden md:block">© 2025 尹磊 版权所有</p>
         </footer>
       </body>
     </html>

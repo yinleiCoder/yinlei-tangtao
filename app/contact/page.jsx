@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,71 +13,74 @@ export default function ContactMe() {
   const leftEyeRef = useRef(null);
   const rightEyeRef = useRef(null);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const svg = svgRef.current;
-    const leftEyeBox = leftEyeRef.current;
-    const rightEyeBox = rightEyeRef.current;
-    const mouse = svg.createSVGPoint();
+  useGSAP(
+    (context, contextSafe) => {
+      const container = containerRef.current;
+      const svg = svgRef.current;
+      const leftEyeBox = leftEyeRef.current;
+      const rightEyeBox = rightEyeRef.current;
+      const mouse = svg.createSVGPoint();
 
-    const createEye = (element) => {
-      gsap.set(element, {
-        transformOrigin: "center",
-      });
-      let bbox = element.getBBox();
-
-      let centerX = bbox.x + bbox.width / 2;
-      let centerY = bbox.y + bbox.height / 2;
-
-      function rotateTo(point) {
-        let dx = point.x - centerX;
-        let dy = point.y - centerY;
-        let angle = Math.atan2(dy, dx);
-
-        gsap.to(element, {
-          duration: 0.3,
-          rotation: `${angle}rad_short`,
+      const createEye = (element) => {
+        gsap.set(element, {
+          transformOrigin: "center",
         });
-      }
+        let bbox = element.getBBox();
 
-      return {
-        element,
-        rotateTo,
+        let centerX = bbox.x + bbox.width / 2;
+        let centerY = bbox.y + bbox.height / 2;
+
+        const rotateTo = contextSafe((point) => {
+          let dx = point.x - centerX;
+          let dy = point.y - centerY;
+          let angle = Math.atan2(dy, dx);
+
+          gsap.to(element, {
+            duration: 0.3,
+            rotation: `${angle}rad_short`,
+          });
+        });
+
+        return {
+          element,
+          rotateTo,
+        };
       };
-    };
 
-    const leftEye = createEye(leftEyeBox);
-    const rightEye = createEye(rightEyeBox);
+      const leftEye = createEye(leftEyeBox);
+      const rightEye = createEye(rightEyeBox);
 
-    let requestId = null;
+      let requestId = null;
 
-    const onFrame = () => {
-      let point = mouse.matrixTransform(svg.getScreenCTM().inverse());
+      const onFrame = () => {
+        let point = mouse.matrixTransform(svg.getScreenCTM().inverse());
 
-      leftEye.rotateTo(point);
-      rightEye.rotateTo(point);
+        leftEye.rotateTo(point);
+        rightEye.rotateTo(point);
 
-      requestId = null;
-    };
+        requestId = null;
+      };
 
-    const onMouseMove = (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-      if (!requestId) {
-        requestId = requestAnimationFrame(onFrame);
-      }
-    };
+      const onMouseMove = (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        if (!requestId) {
+          requestId = requestAnimationFrame(onFrame);
+        }
+      };
 
-    container.addEventListener("mousemove", onMouseMove);
+      container.addEventListener("mousemove", onMouseMove);
 
-    return () => {
-      container.removeEventListener("mousemove", onMouseMove);
-    };
-  }, []);
+      return () => {
+        container.removeEventListener("mousemove", onMouseMove);
+      };
+    },
+    { scope: containerRef, dependencies: [] }
+  );
 
   return (
     <div
-      className="w-full h-screen bg-[#cdea67] flex justify-center items-center"
+      className="w-full h-screen bg-[#cdea67] flex justify-center items-center overflow-hidden"
       ref={containerRef}
     >
       <svg
