@@ -1,10 +1,13 @@
+import { ReactLenis } from "lenis/react";
 import { projects } from "@/data/projects";
 import DirectionAwareMagnetically from "../components/DirectionAwareMagnetically";
+import Persons from "../components/Persons";
 
 export default function Projects() {
   return (
-    <div className="w-full h-svh flex flex-col items-center">
+    <ReactLenis root>
+      <Persons data={projects} />
       <DirectionAwareMagnetically />
-    </div>
+    </ReactLenis>
   );
 }
