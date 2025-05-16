@@ -25,8 +25,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased scrollbar-thin`}
       >
-        <nav className="w-full fixed top-0 px-4 py-2 flex justify-between items-center z-50 mix-blend-difference">
-          <Link href="/" className="font-bold">狗子与我</Link>
+        <nav className="w-full fixed top-0 px-4 py-2 flex justify-between items-center z-50">
+          <Link href="/" className="font-bold mix-blend-difference">狗子与我</Link>
           <Avatar>
             <AvatarImage src="/avatar.jpg" className="hover:scale-110 transition"/>
             <AvatarFallback>Y</AvatarFallback>
